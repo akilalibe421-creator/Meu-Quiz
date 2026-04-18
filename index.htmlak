@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Descobre o Teu Potencial</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a, #6366f1);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 420px;
+    margin: auto;
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 6px;
+    background: #222;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    background: #22c55e;
+    transition: 0.4s;
+}
+
+.question {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 12px;
+    background: #6366f1;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #4f46e5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Descobre se tens perfil para ganhar dinheiro online</h1>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+
+<div id="quiz">
+<div class="question" id="question">Carregando...</div>
+<div id="answers"></div>
+</div>
+
+</div>
+
+<script>
+
+const questions = [
+{q: "Queres ganhar dinheiro online?", a: ["Sim", "Talvez", "Não"]},
+{q: "Tens acesso a internet todos os dias?", a: ["Sim", "Não"]},
+{q: "Quanto queres ganhar por mês?", a: ["Pouco", "Médio", "Muito"]},
+{q: "Estás disposto a aprender algo novo?", a: ["Sim", "Talvez", "Não"]},
+{q: "Preferes trabalhar de casa?", a: ["Sim", "Não"]}
+];
+
+let index = 0;
+
+function showQuestion() {
+document.getElementById("question").innerText = questions[index].q;
+
+let answersHTML = "";
+questions[index].a.forEach(ans => {
+answersHTML += `<button onclick="nextQuestion()">${ans}</button>`;
+});
+
+document.getElementById("answers").innerHTML = answersHTML;
+
+updateBar();
+}
+
+function nextQuestion() {
+index++;
+if(index < questions.length){
+showQuestion();
+}else{
+showResult();
+}
+}
+
+function updateBar(){
+let percent = (index / questions.length) * 100;
+document.getElementById("bar").style.width = percent + "%";
+}
+
+function showResult(){
+document.querySelector(".container").innerHTML = `
+<h2>Parabéns 🎉</h2>
+<p>Com base nas tuas respostas, tens grande potencial para ganhar dinheiro online.</p>
+
+<p><strong>Prepara-te para começar agora 👇</strong></p>
+
+<a href="https://go.hotmart.com/W104222553E">
+<button>Quero começar agora 🚀</button>
+</a>
+`;
+}
+
+showQuestion();
+
+</script>
+
+</body>
+  </html>
